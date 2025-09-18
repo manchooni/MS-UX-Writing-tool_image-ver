@@ -269,10 +269,10 @@ if st.button("결과 보기"):
                 검토 결과 제안2 :
                 
                 3. 규칙 위반 사항
-                규칙과 원칙에 위반된 항목을 보여줍니다.
+                규칙과 원칙에 위반된 항목을 보여줍니다.(최대2개)
 
                 4. 최종 추천 문장
-                규칙을 모두 준수하는 문장을 제시하세요.
+                규칙을 모두 준수하는 문장을 제시하세요.부가설명은 4줄이하.
                 """
                 model_gemini = genai.GenerativeModel('gemini-1.5-flash')
                 response = model_gemini.generate_content(prompt_gemini)
@@ -387,10 +387,10 @@ if st.button("결과 보기"):
 		        변경 전, 변경 후, 사유를 표로 보여줍니다.
                 
                 3. 규칙 위반 사항
-                규칙과 원칙에 위반된 항목을 보여줍니다.
+                규칙과 원칙에 위반된 항목을 보여줍니다.(최대2개)
 
                 4. 최종 추천 문장
-                규칙을 모두 준수하는 문장을 제시하세요.
+                규칙을 모두 준수하는 문장을 제시하세요.부가설명은 4줄이하.
                 """
                 
                 model_gemini = genai.GenerativeModel('gemini-1.5-flash')
@@ -408,7 +408,7 @@ if st.button("결과 보기"):
                 
                 message = client.messages.create(
                     model="claude-3-haiku-20240307",
-                    max_tokens=1000,
+                    max_tokens=1200,
                     messages=[{"role": "user", "content": prompt_claude}]
                 )
                 st.info(message.content[0].text)
