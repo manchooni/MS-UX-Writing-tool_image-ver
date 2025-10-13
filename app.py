@@ -146,7 +146,7 @@ if st.button("결과 보기"):
             mime_type = uploaded_image.type # 미디어 타입 자동 감지 (image/jpeg, image/png 등)
 
             # 이미지로부터 텍스트 추출 (Gemini Vision 모델 사용)
-            vision_model = genai.GenerativeModel('gemini-1.5-flash')
+            vision_model = genai.GenerativeModel('gemini-2.5-flash')
             image_content = {
                 "mime_type": mime_type,
                 "data": image_bytes
@@ -277,7 +277,7 @@ if st.button("결과 보기"):
                 4. 최종 추천 문장
                 규칙을 모두 준수하는 문장을 제시하세요.부가설명은 4줄이하.
                 """
-                model_gemini = genai.GenerativeModel('gemini-1.5-flash')
+                model_gemini = genai.GenerativeModel('gemini-2.5-flash')
                 response = model_gemini.generate_content(prompt_gemini)
                 st.info(response.text)
 
@@ -396,11 +396,11 @@ if st.button("결과 보기"):
                 규칙을 모두 준수하는 문장을 제시하세요.부가설명은 4줄이하.
                 """
                 
-                model_gemini = genai.GenerativeModel('gemini-1.5-flash')
+                model_gemini = genai.GenerativeModel('gemini-2.5-flash')
                 response = model_gemini.generate_content(prompt_gemini)
                 st.info(response.text)
 
-            elif mode == "전문가 모드 (Haiku)":
+            elif mode == "전문가 모드 (Haiku/유료)":
                 prompt_claude = f"""
                 {UX_WRITING_GUIDELINES}
                 ---
