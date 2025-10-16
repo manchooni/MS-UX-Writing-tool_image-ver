@@ -106,7 +106,7 @@ UX_WRITING_GUIDELINES = """
 """
 
 st.set_page_config(page_title="UX Writing & Image Tool", page_icon="📝")
-st.title("HIST UX Writing 도구")
+st.title("항공사 UX Writing 도구")
 st.markdown("텍스트를 입력하거나 이미지를 업로드하고 관련 요청사항을 함께 입력하여 UX 개선 결과를 받아보세요.")
 
 # 모드 선택 라디오 버튼 추가 (이미지 처리시에는 Gemini 사용)
