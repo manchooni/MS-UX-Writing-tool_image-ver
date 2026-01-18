@@ -6,8 +6,7 @@ import os
 
 # .env 파일에서 API 키 불러오기
 load_dotenv()
-client = 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # 간결하게 줄인 UX 라이팅 가이드라인 (내용 변경 없음)
 UX_WRITING_GUIDELINES = """
