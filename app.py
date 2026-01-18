@@ -1,5 +1,4 @@
 import streamlit as st
-import anthropic
 import google.generativeai as genai
 import base64
 from dotenv import load_dotenv
@@ -7,7 +6,7 @@ import os
 
 # .env 파일에서 API 키 불러오기
 load_dotenv()
-client = anthropic.Anthropic(api_key=os.getenv("CLAUDE_API_KEY"))
+client = 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # 간결하게 줄인 UX 라이팅 가이드라인 (내용 변경 없음)
@@ -110,10 +109,6 @@ UX_WRITING_GUIDELINES = """
 st.set_page_config(page_title="UX Writing & Image Tool", page_icon="📝")
 st.title("항공사 UX Writing 도구")
 st.markdown("텍스트를 입력하거나 이미지를 업로드하고 관련 요청사항을 함께 입력하여 UX 개선 결과를 받아보세요.")
-
-# 모드 선택 라디오 버튼 추가 (이미지 처리시에는 Gemini 사용)
-mode = st.radio("텍스트 검토 모드 선택", ["일반 모드 (Gemini)", "전문가 모드 (Haiku/유료)"], horizontal=True,
-                help="일반 모드는 Gemini API를 사용하여 비용 효율적이며, 전문가 모드는 Claude Haiku API를 사용하여 보다 전문적인 UX 검토를 제공합니다. 이미지와 함께 요청할 때는 Gemini API가 사용됩니다.")
 
 # 텍스트 입력창
 user_text = st.text_area("텍스트 또는 이미지 관련 요청 입력 (다듬고 싶은 문장 또는 이미지 설명/명령어)", height=150, 
@@ -329,22 +324,7 @@ if st.button("결과 보기"):
                 response = model_gemini.generate_content(prompt_gemini)
                 st.info(response.text)
 
-            elif mode == "전문가 모드 (Haiku/유료)":
-                    # --- [Claude Prompt START] ---
-                    # 1. 들여쓰기 문제를 해결하기 위해 삼중 따옴표를 블록의 가장 왼쪽으로 옮깁니다.
-                    prompt_claude = f"""{UX_WRITING_GUIDELINES}
-					---
-					입력: {user_text}
-					---
-					출력:
-					""" # 2. 닫는 따옴표도 가장 왼쪽으로 옮깁니다.
 
-                    message = client.messages.create(
-                        model="claude-3-haiku-20240307",
-                        max_tokens=1200,
-                        messages=[{"role": "user", "content": prompt_claude}]
-                        )
-                    st.info(message.content[0].text)
 
         # 3. 입력이 없을 경우의 처리 (if st.button("결과 보기"): 내부)
         elif not user_text and not uploaded_image:
