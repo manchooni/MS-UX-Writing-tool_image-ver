@@ -285,7 +285,6 @@ if st.button("결과 보기"):
                 
         # 2. 텍스트만 처리: 이미지 없이 텍스트 입력만 있을 경우 기존 로직 유지
         elif user_text and not uploaded_image:
-            if mode == "일반 모드 (Gemini)":
                 prompt_gemini = f"""
                 당신은 항공사 UX 라이터입니다. 제공된 보이스톤과 UX writing 규칙을 기반으로 사용자 요청을 기반으로, 명확하고 신뢰가 가는 긍정적인 화법으로 전환율을 높이는 문장으로 수정해 주세요.
                 # (이하 Gemini 프롬프트 내용은 이미지 처리 로직과 동일하므로 생략)
